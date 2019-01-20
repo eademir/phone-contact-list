@@ -21,6 +21,10 @@ export default class Form extends React.Component{
         this.props.addContact({
            ...this.state
         });
+        this.setState({
+            name: '',
+            phone:''
+        })
     }
     render(){
         return(
