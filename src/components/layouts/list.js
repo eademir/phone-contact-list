@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from './input'
 import Span from './span'
 
 export default class List extends React.Component{
@@ -10,12 +9,12 @@ export default class List extends React.Component{
     render(){
         return(
             <div>
-                <Input name={'filter'} id={'filter'} pholdr={'Filter by name or phone number'}/>
-                <ul>
+                <input name={'filter'} id={'filter'} placeholder={'Filter by name or phone number'}/>
+                <ul key={'ulkey'}>
                     {
                         this.props.contact.map(
-                            contact =>
-                                <li key={contact.phone}>
+                            (contact, index) =>
+                                <li key={'item-'+index}>
                                     <Span
                                         name={contact.name}
                                         cls={'name'}

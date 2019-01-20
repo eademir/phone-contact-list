@@ -1,5 +1,3 @@
-import React from 'react'
-
 import List from './list'
 import Contact from './contact'
 import Form from './Form'

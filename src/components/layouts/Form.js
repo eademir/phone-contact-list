@@ -1,21 +1,16 @@
 import React from 'react'
-import Input from './input'
-import PropTypes from 'prop-types'
 import Button from './button'
 
 export default class Form extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.state = {
+            name: '',
+            phone: ''
+        };
     }
-    static propTypes = {
-        contact: PropTypes.array.isRequired,
-    };
-    state = {
-        name: '',
-        phone: ''
-    };
     onChange(e){
         this.setState({
             [e.target.name]: e.target.value
@@ -30,22 +25,22 @@ export default class Form extends React.Component{
     render(){
         return(
             <form onSubmit={this.onSubmit}>
-                <Input
+                <input
                     name={'name'}
                     id={'name'}
                     value={this.state.name}
                     onChange={this.onChange}
-                    pholdr={'Enter a name'}
-                    key={this.state.name}
+                    placeholder={'Enter a name'}
+                    key={'name-key'}
                 />
                 <br/>
-                <Input
+                <input
                     name={'phone'}
                     id={'phone'}
                     value={this.state.phone}
                     onChange={this.onChange}
-                    pholdr={'Enter a phone'}
-                    key={this.state.phone}
+                    placeholder={'Enter a phone'}
+                    key={"phone-key"}
                 />
                 <br/>
                 <Button name={'Add'}/>
