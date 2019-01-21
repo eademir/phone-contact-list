@@ -33,7 +33,7 @@ export default class List extends React.Component{
                     value={this.state.filterText}
                     onChange={this.onChangeFilterText}
                     id={'filter'}
-                    placeholder={'Filter by name or phone number'}
+                    placeholder={'Filter by name'}
                 />
                 <ul key={'ulkey'}>
                     {
