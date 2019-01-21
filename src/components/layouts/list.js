@@ -3,16 +3,41 @@ import PropTypes from 'prop-types'
 import Span from './span'
 
 export default class List extends React.Component{
+    constructor(props){
+        super(props);
+        this.onChangeFilterText = this.onChangeFilterText.bind(this);
+        this.state = {
+            filterText: ''
+        };
+    }
     static propTypes = {
         contact: PropTypes.array.isRequired,
     };
+    onChangeFilterText(e){
+        this.setState({
+            filterText: e.target.value
+        })
+    };
     render(){
+        const filtredCont = this.props.contact.filter(
+            contact => {
+                return contact.name.toLowerCase().indexOf(
+                    this.state.filterText.toLowerCase()
+                ) !== -1
+            }
+        );
         return(
             <div>
-                <input name={'filter'} id={'filter'} placeholder={'Filter by name or phone number'}/>
+                <input
+                    name={'filter'}
+                    value={this.state.filterText}
+                    onChange={this.onChangeFilterText}
+                    id={'filter'}
+                    placeholder={'Filter by name or phone number'}
+                />
                 <ul key={'ulkey'}>
                     {
-                        this.props.contact.map(
+                        filtredCont.map(
                             (contact, index) =>
                                 <li key={'item-'+index}>
                                     <Span
